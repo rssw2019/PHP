@@ -1,0 +1,31 @@
+CRUD
+Create (insert)
+$sql = "INSERT INTO `users` (`first_name`, `last_name`, `email`, `phone_number`, `address`) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber', '$address')";
+
+          if (mysqli_query($conn, $sql)) {
+              header("location: index.php");
+          } else {
+               echo "Something went wrong. Please try again later.";
+          }
+
+Read
+$query = mysqli_query($conn, "SELECT * FROM users WHERE ID = '$id'");
+
+Update
+$sql = "UPDATE `users` SET `first_name`= '$firstName', `last_name`= '$lastName', `email`= '$email', `phone_number`= '$phoneNumber', `address`= '$address' WHERE id='$id'";
+
+          if (mysqli_query($conn, $sql)) {
+              header("location: index.php");
+          } else {
+              echo "Something went wrong. Please try again later.";
+          }
+
+Delete
+$query = "DELETE FROM users WHERE id = '$id'";
+if (mysqli_query($conn, $query)) {
+        header("location: index.php");
+    } else {
+         echo "Something went wrong. Please try again later.";
+    }
+
+    mysqli_close($conn);
